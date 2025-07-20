@@ -1,5 +1,7 @@
 # Luigi Pipeline - Open Brewery DB – Medallion Architecture
 
+![](assets/data_flow.png)
+
 ## Design Choices
 - Medallion Architecture: Mandatory structure for the environment, we configure the pipeline into three layers (Bronze, Silver, Gold), although the mandatory check we use this schema to ensure better organization, scalability, and separation of concerns.
 - Luigi: Used as the orchestration tool due to its simplicity, modularity, and ability to manage task dependencies. Luigi allows for step-by-step execution and dependency resolution in a lightweight environment.
@@ -11,7 +13,9 @@
 - - Bronze Layer: Data is ingested from the Open Brewery DB API and saved "as is" in JSON format.
 - - Silver Layer: The raw data is transformed into a structured format (Parquet), partitioned by state for optimized querying and storage.
 - - Gold Layer: Aggregations are applied (e.g., brewery counts by type and state), and the final dataset is saved in Parquet format, ready for consumption.
-- Project Structure
+
+## Project Structure
+```
 LUIGI_BREWERIES_PIPELINE/
 ├── dags/                  # Luigi pipeline definition
 │   └── brewery_pipeline.py
@@ -30,6 +34,7 @@ LUIGI_BREWERIES_PIPELINE/
 ├── Dockerfile             # Docker image definition
 ├── README.md              # Documentation
 └── requirements.txt       # Python dependencies
+```
 
 ## How to Run It
 - Install Docker Desktop on your machine: https://www.docker.com/get-started/
@@ -46,7 +51,7 @@ Bronze Layer: Check data_lake/bronze for the raw JSON file.
 Silver Layer: Check data_lake/silver for Parquet files partitioned by state.
 Gold Layer: Check data_lake/gold for the aggregated Parquet file.
 
-# Future Improvements / Trade-offs
+## Future Improvements / Trade-offs
 As a straight foward timeboxed project, the current implementation serves as a baseline. We made trade-offs based on speed, difficulty level, and we have space for later improvements:
 
 - Cloud Integration: We ran the service localy, but we could use MinIO to mock the cloud environment, or even use Azure DataLake storage, AWS s3 or GPC Storage instead of local directories. This could give us more scalability and control under the access on the data.
@@ -54,6 +59,6 @@ As a straight foward timeboxed project, the current implementation serves as a b
 - Monitoring and Alerts: We can add scenarios for monitoring and alerting triggers using tools like Slack notifications.
 - Enhanced Testing: Create specific and isolated test scnearios for data validation to cover not only the common exceptions, adding more test coverage.
 
-# Support Material Used
+## Support Material Used
 Open Brewery DB API Documentation: https://www.openbrewerydb.org/documentation
 Luigi Documentation: https://luigi.readthedocs.io/en/stable/
