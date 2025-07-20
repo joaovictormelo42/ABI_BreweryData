@@ -1,0 +1,10 @@
+version: '3'
+services:
+  luigi:
+    build: .
+    ports:
+      - "8082:8082" 
+    volumes:
+      - ./dags:/usr/src/app/dags
+      - ./data_lake:/usr/src/app/data_lake
+    command: ["luigid"] 

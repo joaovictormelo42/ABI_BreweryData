@@ -1,0 +1,7 @@
+luigi==3.2.1                                 # Orchestration framework for managing pipelines
+requests==2.31.0                             # To fetch data from the Open Brewery DB API
+pandas==2.0.3                                # For data transformation and aggregation
+numpy==1.26.0                                # Compatible with pandas 2.x
+pyarrow==12.0.1                              # Required for saving Parquet files
+fastparquet==2023.10.1                       # Alternative library for handling Parquet files
+pytest==7.4.0                                # For writing and running test cases

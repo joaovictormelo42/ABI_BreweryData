@@ -1,0 +1,53 @@
+# Python-related files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+*.env
+
+# Luigi logs and state files
+logs/
+luigi-state.pickle
+
+# Data lake directories (generated data)
+data_lake/bronze/
+data_lake/silver/
+data_lake/gold/
+
+# Virtual environment
+venv/
+.env/
+
+# Docker-related files
+*.log
+docker-compose.override.yml
+.dockerignore
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# IDE-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage reports
+.coverage
+htmlcov/
+.tox/
+.cache/
+
+# Pytest cache
+.pytest_cache/
+
+# Build artifacts
+build/
+dist/
+*.egg
+*.whl
