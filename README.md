@@ -43,14 +43,20 @@ LUIGI_BREWERIES_PIPELINE/
 
 - Run the pipeline step-by-step or all at once. To run step-by-step you can navigate through each class of transformations, from Bronze to Gold, if you want to run all at once, just follow the instructions for the Gold Layer:
 - - Step 1: Bronze Layer (Data Ingestion): 
+    ```
     Run docker ps inside the terminal to get the conainter_id
     Run the command docker exec -it <container_id> python dags/brewery_pipeline.py FetchRawData --local-scheduler
+    ```
 - - Step 2: Silver Layer (Transform Bronze → Silver): 
+    ```
     Run docker ps inside the terminal to get the conainter_id
     Run the command docker exec -it <container_id> python dags/brewery_pipeline.py TransformToSilver --local-scheduler
+    ```
 - - Step 3: Gold Layer (Aggregate Silver → Gold): 
+    ```
     Run docker ps inside the terminal to get the conainter_id
     Run the command docker exec -it <container_id> python dags/brewery_pipeline.py AggregateToGold --local-scheduler
+    ```
 
 Verify the outputs:
 Bronze Layer: Check data_lake/bronze for the raw JSON file.
